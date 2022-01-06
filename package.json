@@ -1,0 +1,26 @@
+{
+  "name": "ndcabigting-store-api",
+  "version": "1.0.0",
+  "description": "yet another e-commerce api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecabigting/ndcabigting-store-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ecabigting/ndcabigting-store-api/issues"
+  },
+  "homepage": "https://github.com/ecabigting/ndcabigting-store-api#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5",
+    "nodemon": "^2.0.15"
+  }
+}
