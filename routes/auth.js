@@ -20,18 +20,18 @@ router.post('/register', async (req, res) => {
   }
 });
 
-//TODO: FIX THE FOLLOWING CODE BELOW IT
+//TODO: FIX THE FOLLOWING CODE BELOW BROKEN
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(401).json({ msg25: 'Invalid Credentials' }).send();
+    !user && res.status(401).send({ msg25: 'Invalid Credentials' });
 
     const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.SKEY);
     const password = hashedPassword.toString(CryptoJS.enc.utf8);
 
-    password !== req.body.password && res.status(401).json({ msg30: 'Invalid Credentials' });
+    password !== req.body.password && res.status(401).send({ msg30: 'Invalid Credentials' });
 
-    res.status(200).json(user);
+    res.status(200).send(user);
   } catch (err) {
     console.log(err);
     //res.status(500).json(err);
