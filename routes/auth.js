@@ -24,12 +24,10 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(401).send({ msg25: 'Invalid Credentials' });
-
+    if (!user) return res.status(401).send({ msg25: 'Invalid Credentials' });
     const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.SKEY);
-    const password = hashedPassword.toString(CryptoJS.enc.utf8);
-
-    password !== req.body.password && res.status(401).send({ msg30: 'Invalid Credentials' });
+    const password = hashedPassword.toString(CryptoJS.enc.Utf8);
+    if (password !== req.body.password) return res.status(401).send({ msg30: 'Invalid Credentials' });
 
     res.status(200).send(user);
   } catch (err) {
